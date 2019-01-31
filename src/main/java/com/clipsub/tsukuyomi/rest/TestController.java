@@ -1,18 +1,16 @@
 package com.clipsub.tsukuyomi.rest;
 
 import com.clipsub.tsukuyomi.entities.Manga;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class TestController {
 
     @GetMapping("/test")
-    public Manga testManga(@RequestParam(name = "name", required = false) String name) {
-        Manga m = new Manga();
-        m.setName("AAA");
-        m.setDescription("effds");
+    public Manga testManga(@RequestParam(name = "name", required = false, defaultValue = "Yes") String name) {
+        Manga m = new Manga("AAAAA");
         return m;
     }
 }

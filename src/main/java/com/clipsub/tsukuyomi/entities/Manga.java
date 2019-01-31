@@ -7,18 +7,15 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
-@Entity
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 public class Manga {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private final String message;
 
-    @Column(name = "name")
-    private String name;
+    public Manga(String message) {
+        super();
+        this.message = message;
+    }
 
-    @Column(name = "description")
-    private String description;
+    public String getMessage() {
+        return message;
+    }
 }
