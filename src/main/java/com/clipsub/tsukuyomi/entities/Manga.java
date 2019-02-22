@@ -1,21 +1,43 @@
 package com.clipsub.tsukuyomi.entities;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-
+@Entity
+@Table(name = "manga")
 public class Manga {
-    private final String message;
 
-    public Manga(String message) {
-        super();
-        this.message = message;
+    @Id
+    private Long id;
+
+    private String name;
+
+    @Column(name = "description", length = 128, nullable = false)
+    private String description;
+
+    public Long getId() {
+        return id;
     }
 
-    public String getMessage() {
-        return message;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
