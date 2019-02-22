@@ -12,6 +12,7 @@ public class Manga {
     @Id
     private Long id;
 
+    @Column(name = "name", length = 64, nullable = false)
     private String name;
 
     @Column(name = "description", length = 128, nullable = false)
