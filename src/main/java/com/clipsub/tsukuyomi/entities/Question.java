@@ -1,25 +1,31 @@
 package com.clipsub.tsukuyomi.entities;
 
+import com.clipsub.tsukuyomi.models.AuditModel;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "manga")
-public class Manga {
-
+@Table(name = "questions")
+public class Question extends AuditModel {
     @Id
-    @GeneratedValue(generator = "manga_generator")
-    @SequenceGenerator(name = "manga_generator", sequenceName = "manga_sequence", initialValue = 1000)
+    @GeneratedValue(generator = "question_generator")
+    @SequenceGenerator(
+            name = "question_generator",
+            sequenceName = "question_sequence",
+            initialValue = 1000
+    )
     private Long id;
 
-    @Column(name = "name", length = 64, nullable = false)
     @NotBlank
     @Size(min = 3, max = 100)
-    private String name;
+    private String title;
 
-    @Column(name = "description", length = 128, nullable = false, columnDefinition = "text")
+    @Column(columnDefinition = "text")
     private String description;
+
+    // Getters and Setters (Omitted for brevity)
 
     public Long getId() {
         return id;
@@ -29,12 +35,12 @@ public class Manga {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
