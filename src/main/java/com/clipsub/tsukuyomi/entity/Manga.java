@@ -12,6 +12,10 @@ public class Manga {
     public Manga() {
     }
 
+    public Manga(String name) {
+        this.name = name;
+    }
+
     public Manga(Long id, String name) {
         this.id = id;
         this.name = name;
