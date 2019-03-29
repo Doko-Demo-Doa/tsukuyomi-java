@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/manga", produces = "application/json")
+@RequestMapping(path = "/manga", produces = "application/json", consumes = "multipart/form-data")
 public class MangaController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class MangaController {
     }
 
     @PostMapping
-    public Manga createManga(String name) {
-        return mangaRepository.save(new Manga(name));
+    public Manga createManga(@RequestBody Manga manga) {
+        return mangaRepository.save(manga);
     }
 }
