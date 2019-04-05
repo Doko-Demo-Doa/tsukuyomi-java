@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "manga")
 public class Manga {
-
     public Manga() {
     }
 
@@ -22,7 +21,7 @@ public class Manga {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", length = 42, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     public Long getId() {
