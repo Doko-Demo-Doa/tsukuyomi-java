@@ -6,8 +6,13 @@ import javax.persistence.*;
 @Table(name = "genre")
 public class Genre {
 
+    public Genre(String alias, String fullName) {
+        this.alias = alias;
+        this.fullName = fullName;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "alias", unique = true)
@@ -15,6 +20,10 @@ public class Genre {
 
     @Column(name = "full_name")
     private String fullName;
+
+    @ManyToOne
+    @JoinColumn
+    private Manga manga;
 
     public Long getId() {
         return id;

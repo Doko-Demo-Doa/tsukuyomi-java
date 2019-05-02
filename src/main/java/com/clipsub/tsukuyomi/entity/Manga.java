@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,8 +52,7 @@ public class Manga implements Serializable {
     @Lob
     private String summary;
 
-    @OneToMany(mappedBy = "manga")
-    @Column(name = "genres")
+    @OneToMany(mappedBy = "manga", cascade = CascadeType.ALL)
     private Set<Genre> genres;
 
     public Long getId() {
