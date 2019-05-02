@@ -6,13 +6,15 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "manga")
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class Manga {
+public class Manga implements Serializable {
     public Manga() {
     }
 
@@ -51,8 +53,9 @@ public class Manga {
     @Lob
     private String summary;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Genre> genres;
+    @OneToMany(mappedBy = "manga")
+    @Column(name = "genres")
+    private Set<Genre> genres;
 
     public Long getId() {
         return id;
@@ -102,11 +105,11 @@ public class Manga {
         this.summary = summary;
     }
 
-    public List<Genre> getGenres() {
+    public Set<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(Set<Genre> genres) {
         this.genres = genres;
     }
 }
